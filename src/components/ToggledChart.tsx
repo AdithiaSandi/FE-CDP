@@ -104,12 +104,15 @@ const ToggledChart: React.FC<props> = ({ data }) => {
 
   return (
     <>
-      <div className="checkbox-container" style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%"
-      }}>
+      <div
+        className="checkbox-container"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
         {options.map((item) => {
           return (
             <FormControlLabel
@@ -119,10 +122,8 @@ const ToggledChart: React.FC<props> = ({ data }) => {
                   onChange={(e) => handleChange(e)}
                   id={item}
                   disabled={
-                    document.getElementById(item)?.checked === true &&
-                    showed.length == 1
-                      ? true
-                      : false
+                    (document.getElementById(item) as HTMLInputElement | null)
+                      ?.checked === true && showed.length == 1
                   }
                 />
               }
