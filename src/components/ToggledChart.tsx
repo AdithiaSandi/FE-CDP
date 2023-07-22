@@ -105,6 +105,7 @@ const ToggledChart: React.FC<props> = ({ data }) => {
     const sortedDates = [...dailyPost].sort(
       (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );
+    console.log(sortedDates);
   }, [dailyPost]);
 
   return (

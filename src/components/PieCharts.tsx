@@ -43,6 +43,8 @@ const PieCharts: React.FC<props> = ({ data }) => {
         };
       })
     );
+    console.log(Data);
+    
   }, [data]);
 
   return (
@@ -58,7 +60,7 @@ const PieCharts: React.FC<props> = ({ data }) => {
           label
         >
           {sorted.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell id={entry.name} key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip />
