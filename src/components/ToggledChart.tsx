@@ -15,7 +15,7 @@ interface props {
 }
 
 interface daily {
-  date: string;
+  date: string | Date;
   Borderland: number;
   "COD: Cold War": number;
   Amazon: number;
@@ -26,6 +26,7 @@ interface daily {
 
 const ToggledChart: React.FC<props> = ({ data }) => {
   const [showed, setShowed] = useState<string[]>(["Total"]);
+  // const [sorted, setSorted] = useState<number>();
 
   const unique = [...new Set(data.map((item) => item.source))];
 
@@ -77,7 +78,9 @@ const ToggledChart: React.FC<props> = ({ data }) => {
       Xbox: Xbox,
       Total: count,
     };
-  });
+  }).sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
 
   const options: string[] = [
     "Total",
@@ -99,8 +102,12 @@ const ToggledChart: React.FC<props> = ({ data }) => {
   };
 
   useEffect(() => {
-    console.log(showed);
-  }, [showed]);
+    const sortedDates = [...dailyPost].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+    console.log(sortedDates);
+    console.log(dailyPost);
+  }, [dailyPost]);
 
   return (
     <>
