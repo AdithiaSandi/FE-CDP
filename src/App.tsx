@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { REST } from "./assets/interfaces.ts";
 import MainChart from "./components/MainChart.tsx";
 import ToggledChart from "./components/ToggledChart.tsx";
+import PieCharts from "./components/PieCharts.tsx";
 
 function App() {
   const [checked, setChecked] = useState(false);
@@ -162,22 +163,49 @@ function App() {
       <div className="main">
         <div className="header"></div>
         <div className="content">
-          <Typography
+          <div
+            className="main-chart"
             style={{
-              textAlign: "center",
+              width: "100%",
+              height: "50%",
             }}
           >
-            Total Engagement
-          </Typography>
-          <MainChart data={data} />
-          <Typography
+            <Typography
+              style={{
+                textAlign: "center",
+              }}
+            >
+              Total Engagement
+            </Typography>
+            <MainChart data={data} />
+          </div>
+          <div
+            className="secondary-charts"
             style={{
-              textAlign: "center",
+              width: "100%",
+              height: "45%",
+              marginTop: "5%",
+              display: "flex"
             }}
           >
-            Daily Engagement
-          </Typography>
-          <ToggledChart data={data} />
+            <div
+              className="toggled-charts"
+              style={{
+                width: "70%",
+                height: "100%",
+              }}
+            >
+              <Typography
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Daily Engagement
+              </Typography>
+              <ToggledChart data={data} />
+            </div>
+            <PieCharts data={data} />
+          </div>
         </div>
         <div className="footer"></div>
       </div>
