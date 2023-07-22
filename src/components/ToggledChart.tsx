@@ -105,8 +105,6 @@ const ToggledChart: React.FC<props> = ({ data }) => {
     const sortedDates = [...dailyPost].sort(
       (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );
-    console.log(sortedDates);
-    console.log(dailyPost);
   }, [dailyPost]);
 
   return (
@@ -139,7 +137,7 @@ const ToggledChart: React.FC<props> = ({ data }) => {
           );
         })}
       </div>
-      <ResponsiveContainer width="100%" height="30%">
+      <ResponsiveContainer width="100%" height="50%">
         <LineChart
           width={500}
           height={300}
